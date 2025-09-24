@@ -1,7 +1,207 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://hackdesk.onrender.com/static/css/index.css">
+    <style>
+        @font-face {
+            font-family: "Quicksand";
+            src: url(../fonts/quicksand.ttf);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Quicksand", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+            font-size: 0.95rem;
+            color: #333;
+            cursor: default;
+            transition: 0.2s ease;
+        }
+
+        body {
+            background: #f1f1f1;
+        }
+
+        main {
+            min-height: 95vh;
+            padding: 50px 5vw;
+        }
+
+        footer {
+            height: 5vh;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer p,
+        footer a {
+            font-size: 0.9rem;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #e91784;
+            cursor: pointer;
+        }
+
+        a * {
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: #000;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #000;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+        }
+
+        h4 {
+            font-size: 1.3rem;
+        }
+
+        h5 {
+            font-size: 1.2rem;
+        }
+
+        h6 {
+            font-size: 1rem;
+        }
+
+        .df {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .dg {
+            display: grid;
+            gap: 20px;
+        }
+
+        button {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            padding: 5px 20px;
+            border: 2px solid #e91784;
+            border-radius: 5px;
+            background: #fff;
+            color: #e91784;
+        }
+
+        button:hover {
+            box-shadow: inset 0 0 5px #000;
+        }
+
+        button * {
+            font-weight: normal;
+        }
+
+        button i {
+            margin-right: 5px;
+            color: #e91784;
+        }
+
+        .button2 {
+            border: 2px solid #e91784;
+            background: #e91784;
+            color: #fff;
+        }
+
+        .button2 i {
+            color: #fff;
+        }
+
+        .button-circle {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .button-circle i {
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        form input,
+        form select,
+        form textarea {
+            border: 1px solid #d7d7d7;
+            padding: 5px 10px;
+            border-radius: 5px;
+            outline-color: #e91784;
+            resize: none;
+        }
+
+        form button {
+            margin-top: 20px;
+        }
+
+        .connexion {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .connexion img {
+            max-height: 200px;
+        }
+
+        .connexion .df {
+            margin-top: 50px;
+            flex-direction: column;
+            text-align: center;
+            background: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .connexion .df h1 {
+            margin-bottom: 30px;
+        }
+
+        .connexion .df form input {
+            text-align: center;
+        }
+
+        .connexion .df form a {
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 
 <body>
