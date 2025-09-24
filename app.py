@@ -384,7 +384,6 @@ def editProject(project_id):
         hosting_server = request.form.get("hosting_server")
         status = request.form.get("status")
         hourly_rate = request.form.get("hourly_rate")
-        client = request.form.get("client")
 
         # Vérifier que tous les champs sont remplis
         if not name_project:
@@ -405,9 +404,7 @@ def editProject(project_id):
         if not hourly_rate:
             flash("Le tarif horaire est obligatoire.", "error")
             return redirect(url_for('editProject', project_id=project_id))
-        if not client:
-            flash("Le client est obligatoire.", "error")
-            return redirect(url_for('editProject', project_id=project_id))
+
         
         # Mettre à jour les informations
         project.name_project=name_project
@@ -416,7 +413,6 @@ def editProject(project_id):
         project.hosting_server=hosting_server
         project.status=status
         project.hourly_rate=hourly_rate
-        project.client_id=client
 
         session.commit()
         
