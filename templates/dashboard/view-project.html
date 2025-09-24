@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+
+<!-- BODY -->
+{% block body %}
+<div class="app dg">
+    <!-- Main -->
+    <main class="app-view dg">
+        <!-- Menu -->
+        {% include 'dashboard/partials/menu-app.html' %}
+        <div class="app-container">
+            <div class="df" style="justify-content: space-between">
+                <h1 class="df">{{ project.name_project}}
+                    <a href="/edit-project/{{ project.id }}">
+                        <button class="button-circle">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                    </a>
+                </h1>
+                <a href="/add-a-task">
+                    <button class="button2">
+                        <i class="bi bi-plus-circle"></i>Ajouter une tâche
+                    </button>
+                </a>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if
+            messages %}
+            <div id="flash-messages" class="container">
+                {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %} {% endwith %}
+
+            <div class="table-list table-projects">
+                {% if tasks %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tâches</th>
+                            <th>Statut</th>
+                            <th>Temps passé</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in tasks %}
+                        <tr>
+                            <td>
+                                <a href="/edit-task/{{ task.id }}">
+                                    {{ task.name_task }}
+                                </a>
+                            </td>
+                            <td>{{ task.status }}</td>
+                            <td>{{ task.time_spent }} h</td>
+
+                            <td class="actions df">
+                                <a href="/edit-task/{{ task.id }}">
+                                    <button class="button-circle">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </a>
+                                <form method="POST" action="/delete-task/{{ task.id }}"
+                                    onsubmit="return confirmDeleteTask();">
+                                    <button type="submit" class="button-circle">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>Aucune tâche trouvée.</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

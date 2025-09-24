@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+<!-- BODY -->
+{% block body %}
+<div class="app dg">
+    <!-- Main -->
+    <main class="app-view dg">
+        <!-- Menu -->
+        {% include 'dashboard/partials/menu-app.html' %}
+        <div class="app-container space">
+            <div class="app-container">
+                <h1>Profil</h1>
+
+                {% with messages = get_flashed_messages(with_categories=true) %} {% if
+                messages %}
+                <div id="flash-messages" class="container">
+                    {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %} {% endwith %}
+
+                <form action="/profile" class="form" method="post">
+                    <label for="lastname">Nom : </label>
+                    <input required type="text" value="{{ user.lastname }}" name="lastname" autocomplete="off" />
+
+                    <label for="firstname">Prénom : </label>
+                    <input required type="text" value="{{ user.firstname }}" name="firstname" autocomplete="off" />
+
+                    <label for="email">Email : </label>
+                    <input required type="email" value="{{ user.email }}" name="email" autocomplete="off" />
+
+                    <button type="submit" class="button2">Sauvegarder</button>
+                </form>
+
+                <form method="POST" class="form" action="/delete-account" onsubmit="return confirmDeleteAccount();">
+                    <button type="submit" class="button2">
+                        <i class="bi bi-trash"></i> Supprimer mon compte
+                    </button>
+                </form>
+
+            </div>
+
+    </main>
+</div>
+{% endblock %}

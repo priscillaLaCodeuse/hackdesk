@@ -1,0 +1,29 @@
+<div class="menu-app">
+  <div>
+    <a href="/">
+      <img src="../../../static/images/logo-hackdesk.png" class="logo" alt="Logo HackDesk" />
+    </a>
+    <nav>
+      <a href="{{ url_for('dashboard') }}" class="{{ 'active' if request.endpoint == 'dashboard' else '' }}">
+        <i class="bi bi-columns-gap"></i> Tableau de bord
+      </a>
+      <a href="{{ url_for('projects') }}" class="{{ 'active' if request.endpoint == 'projects' else '' }}">
+        <i class="bi bi-folder"></i> Projets
+      </a>
+      <a href="{{ url_for('tasks') }}" class="{{ 'active' if request.endpoint == 'tasks' else '' }}">
+        <i class="bi bi-check2-circle"></i> Tâches
+      </a>
+      <a href="{{ url_for('clients') }}" class="{{ 'active' if request.endpoint == 'clients' else '' }}">
+        <i class="bi bi-people-fill"></i> Clients
+      </a>
+    </nav>
+  </div>
+  <div class="links">
+    <a href="{{ url_for('profile') }}" class="{{ 'active' if request.endpoint == 'profile' else '' }}">
+      <i class="bi bi-person-circle"></i> Profil
+    </a>
+    <a href="{{ url_for('logout') }}">
+      <i class="bi bi-box-arrow-right"></i> Déconnexion
+    </a>
+  </div>
+</div>

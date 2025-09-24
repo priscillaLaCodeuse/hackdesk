@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+<!-- BODY -->
+{% block body %}
+
+<!-- Main -->
+<main>
+  <div class="connexion">
+    <div>
+      <img src="../static/images/logo-hackdesk.png" alt="Logo HackDesk" />
+      <p>Gestion de projet simplifiée</p>
+    </div>
+
+    <div class="df">
+      <h1>Connexion</h1>
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div id="flash-messages" class="container">
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <form action="/" method="post">
+        <input required type="email" placeholder="Email" name="email" autofocus autocomplete="off" />
+
+        <input required type="password" placeholder="Mot de passe" name="password" autocomplete="off" />
+        <a href="/reinitialisation-password">Mot de passe oublié ?</a>
+        <button type="submit" class="button2">Se connecter</button>
+      </form>
+      <p>Pas encore de compte ? <a href="/register">Inscrivez-vous</a></p>
+    </div>
+  </div>
+</main>
+{% endblock %}

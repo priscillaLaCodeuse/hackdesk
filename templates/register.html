@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+<!-- BODY -->
+{% block body %}
+
+<!-- Main -->
+<main>
+  <div class="connexion">
+    <div>
+      <img src="../static/images/logo-hackdesk.png" alt="Logo HackDesk" />
+      <p>Gestion de projet simplifiée</p>
+    </div>
+
+    <div class="df">
+      <h1>Créer un compte</h1>
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div id="flash-messages" class="container">
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <form action="/register" method="post">
+        <input
+          required
+          type="text"
+          placeholder="Nom"
+          name="lastname"
+          autofocus
+          autocomplete="off"
+        />
+        <input
+          required
+          type="text"
+          placeholder="Prénom"
+          name="firstname"
+          autocomplete="off"
+        />
+        <input
+          required
+          type="email"
+          placeholder="Email"
+          name="email"
+          autocomplete="off"
+        />
+        <input
+          required
+          type="password"
+          placeholder="Mot de passe"
+          name="password"
+          autocomplete="off"
+        />
+
+        <input
+          required
+          type="password"
+          placeholder="Confirmation"
+          name="confirmation"
+          autocomplete="off"
+        />
+
+        <button type="submit" class="button2">Créer un compte</button>
+      </form>
+      <p>Vous avez déjà un compte ? <a href="/">Connectez-vous</a></p>
+    </div>
+  </div>
+</main>
+{% endblock %}

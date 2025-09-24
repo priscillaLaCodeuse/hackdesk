@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+<!-- BODY -->
+{% block body %}
+<div class="app dg">
+  <!-- Main -->
+  <main class="app-view dg">
+    <!-- Menu -->
+    {% include 'dashboard/partials/menu-app.html' %}
+    <div class="app-container">
+      <div class="df" style="justify-content: space-between">
+        <h1>Projets</h1>
+        <a href="/add-a-project">
+          <button class="button2">
+            <i class="bi bi-plus-circle"></i>Ajouter un projet
+          </button>
+        </a>
+      </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div id="flash-messages" class="container">
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <div class="table-list table-projects">
+        {% if projects %}
+        <table>
+          <thead>
+            <tr>
+              <th>Nom du projet</th>
+              <th>URL</th>
+              <th>Tarif horaire</th>
+              <th>Temps total</th>
+              <th>Facturation</th>
+              <th>Statut</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for project in projects|reverse %}
+            <tr>
+              <td>
+                <a href="/view-project/{{ project.id }}">
+                  {{ project.name_project}}
+                </a>
+              </td>
+              <td><a href="{{ project.url }}" target="_blank">{{ project.url}}</a></td>
+              <td>{{ project.hourly_rate}} €</td>
+              <td>{{ project.total_time}} h</td>
+              <td>{{ project.total_cost}} €</td>
+              <td>{{ project.status}}</td>
+              <td class="actions df">
+                <a href="/view-project/{{ project.id }}">
+                  <button class="button-circle">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </a>
+                <a href="/edit-project/{{ project.id }}">
+                  <button class="button-circle">
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                </a>
+                <form method="POST" action="/delete-project/{{ project.id }}" onsubmit="return confirmDeleteProject();">
+                  <button type="submit" class="button-circle">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p>Aucun projet trouvé.</p>
+        {% endif %}
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

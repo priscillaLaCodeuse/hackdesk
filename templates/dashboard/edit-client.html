@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+<!-- BODY -->
+{% block body %}
+<div class="app dg">
+  <!-- Main -->
+  <main class="app-view dg">
+    <!-- Menu -->
+    {% include 'dashboard/partials/menu-app.html' %}
+    <div class="app-container space">
+      <h1>{{ client.firstname}} {{ client.lastname }}</h1>
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div id="flash-messages" class="container">
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <form action="/edit-client/{{ client.id }}" class="form" method="post">
+        <label for="lastname">Nom : </label>
+        <input required type="text" value="{{ client.lastname }}" name="lastname" />
+
+        <label for="firstname">Prénom : </label>
+        <input required type="text" value="{{ client.firstname }}" name="firstname" />
+
+        <label for="enterprise">Entreprise : </label>
+        <input type="text" value="{{ client.enterprise }}" name="enterprise" />
+
+        <label for="address">Adresse : </label>
+        <input type="text" value="{{ client.address }}" name="address" />
+
+        <label for="zip_code">Code postal : </label>
+        <input type="text" value="{{ client.zip_code }}" name="zip_code" maxlength="5" />
+
+        <label for="city">Ville : </label>
+        <input type="text" value="{{ client.city }}" name="city" />
+
+        <label for="country">Pays : </label>
+        <input type="text" value="{{ client.country }}" name="country" />
+
+        <label for="phone_number">Téléphone : </label>
+        <input required type="tel" value="{{ client.phone_number }}" name="phone_number" />
+
+        <label for="email">Email : </label>
+        <input required type="email" value="{{ client.email }}" name="email" />
+
+        <button type="submit" class="button2">Sauvegarder</button>
+      </form>
+    </div>
+  </main>
+</div>
+{% endblock %}

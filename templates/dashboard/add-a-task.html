@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+<!-- BODY -->
+{% block body %}
+<div class="app dg">
+  <!-- Main -->
+  <main class="app-view dg">
+    <!-- Menu -->
+    {% include 'dashboard/partials/menu-app.html' %}
+    <div class="app-container">
+      <div class="df" style="justify-content: space-between">
+        <h1>Ajouter une tâche</h1>
+        <a href="/tasks">
+          <button class="button2">
+            <i class="bi bi-arrow-left"></i> Retour
+          </button>
+        </a>
+      </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div id="flash-messages" class="container">
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <form action="/add-a-task" class="table-list" method="post">
+        <input required type="text" placeholder="Nom de la tâche" name="name_task" autofocus autocomplete="off" />
+
+        <select required name="status">
+          <option value="Statut" selected disabled>Statut</option>
+          <option value="À faire">À faire</option>
+          <option value="Bloquée">Bloquée</option>
+          <option value="Terminée">Terminée</option>
+        </select>
+
+        <input type="number" step="0.1" placeholder="Temps passé" name="time_spent" min="0" autocomplete="off" />
+
+        <select required name="project">
+          {% if projects %}
+          <option value="0" selected disabled>Projet</option>
+          {% for project in projects %}
+          <option value="{{ project.id }}">{{ project.name_project }}</option>
+          {% endfor %}
+          {% else %}
+          <option value="0" selected disabled>Aucun projet trouvé</option>
+          <option value="0">Aucun</option>
+          {% endif %}
+        </select>
+
+        <button type="submit" class="button2">Ajouter une tâche</button>
+      </form>
+    </div>
+  </main>
+</div>
+{% endblock %}

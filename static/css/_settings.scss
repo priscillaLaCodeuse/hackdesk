@@ -1,0 +1,424 @@
+// COLORS
+$color1: #e91784;
+$color1Shadow: rgba(233, 23, 132, 0.4);
+$blackShadow: rgba(0, 0, 0, 0.25);
+$white: #fff;
+$black: #000;
+$border: #d7d7d7;
+$text: #333;
+$bgApp: #f1f1f1;
+
+// FONTS
+@font-face {
+  font-family: "Quicksand";
+  src: url(../fonts/quicksand.ttf);
+}
+
+$font1: "Quicksand", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
+
+// GENERAL
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font1;
+  font-size: 0.95rem;
+  color: $text;
+  cursor: default;
+  transition: 0.2s ease;
+}
+
+body {
+  background: $bgApp;
+}
+
+main {
+  min-height: 95vh;
+  padding: 50px 5vw;
+}
+
+footer {
+  height: 5vh;
+  text-align: center;
+  box-shadow: 0 0 10px $blackShadow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p,
+  a {
+    font-size: 0.9rem;
+  }
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: $color1;
+  cursor: pointer;
+
+  * {
+    cursor: pointer;
+  }
+
+  &:hover {
+    color: $black;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $black;
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+// ====
+// FLEX
+// ====
+.df {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+// ====
+// GRID
+// ====
+.dg {
+  display: grid;
+  gap: 20px;
+}
+
+// ======
+// MIXINS
+// ======
+@mixin shadow {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  &:hover {
+    box-shadow: inset 0 0 5px $black;
+  }
+}
+
+// =======
+// BUTTONS
+// =======
+button {
+  @include shadow;
+  padding: 5px 20px;
+  border: 2px solid $color1;
+  border-radius: 5px;
+  background: $white;
+  color: $color1;
+
+  * {
+    font-weight: normal;
+  }
+
+  i {
+    margin-right: 5px;
+    color: $color1;
+  }
+}
+
+.button2 {
+  border: 2px solid $color1;
+  background: $color1;
+  color: $white;
+
+  i {
+    color: $white;
+  }
+}
+
+.button-circle {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  i {
+    margin: 0;
+  }
+}
+
+// ====
+// FORM
+// ====
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 600px;
+
+  input,
+  select,
+  textarea {
+    border: 1px solid $border;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline-color: $color1;
+    resize: none;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+}
+
+// ===============
+// PAGES CONNEXION
+// ===============
+.connexion {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+
+  img {
+    max-height: 200px;
+  }
+
+  .df {
+    margin-top: 50px;
+    flex-direction: column;
+    text-align: center;
+    background: $white;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px $blackShadow;
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    form {
+      input {
+        text-align: center;
+      }
+
+      a {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// APP
+.app-view {
+  grid-template-columns: 1fr 4fr;
+  padding: 0;
+}
+
+.menu-app {
+  background: $white;
+  padding: 20px;
+
+  .logo {
+    max-height: 10vh;
+    margin: 0 auto 20px;
+  }
+
+  a {
+    display: block;
+    color: $text;
+    margin-bottom: 10px;
+    font-weight: normal;
+    padding: 10px;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  .active {
+    background: $color1;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    font-weight: bold;
+    color: $white;
+    border-radius: 5px;
+
+    * {
+      color: $white;
+    }
+  }
+
+  .links {
+    position: absolute;
+    bottom: 5vh;
+  }
+}
+
+.app-container {
+  padding: 50px 50px 50px 20px;
+
+  .form {
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.projects-charts,
+.clients-charts {
+  margin-bottom: 20px;
+
+  .project-chart-item,
+  .client-chart-item {
+    background: $white;
+    box-shadow: 0 0 10px $blackShadow;
+    border-radius: 5px;
+    padding: 20px;
+
+    i {
+      padding: 10px;
+      font-size: 2rem;
+      color: $color1;
+    }
+
+    p {
+      margin-bottom: 5px;
+    }
+
+    span {
+      color: $black;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.projects-charts {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.clients-charts {
+  grid-template-columns: 1fr;
+}
+
+.table-list {
+  margin-top: 50px;
+}
+
+.space {
+  h1 {
+    margin-bottom: 50px;
+  }
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  background: $white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px $blackShadow;
+  text-align: center;
+
+  th,
+  td {
+    padding: 10px 20px;
+    border: 0.5px solid $blackShadow;
+  }
+
+  thead {
+    background: $color1;
+    border-radius: 10px 10px 0 0;
+
+    th {
+      color: $white;
+
+      &:first-of-type {
+        border-radius: 10px 0 0 0;
+      }
+
+      &:last-of-type {
+        border-radius: 0 10px 0 0;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      .actions {
+        flex-direction: row;
+        justify-content: center;
+
+        form {
+          display: flex;
+          min-width: 0;
+          width: auto;
+        }
+      }
+
+      a {
+        color: $text;
+      }
+
+      &:last-of-type {
+        td {
+          &:first-of-type {
+            border-radius: 0 0 0 10px;
+          }
+
+          &:last-of-type {
+            border-radius: 0 0 10px 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.flash {
+  padding: 50px;
+  border: 2px solid;
+  border-radius: 10px;
+  box-shadow: 0 0 10px $blackShadow;
+  margin: 50px auto;
+}
+
+.error {
+  border-color: crimson;
+}
+
+.success {
+  border-color: lawngreen;
+}
+
+.info {
+  border-color: cornflowerblue;
+}

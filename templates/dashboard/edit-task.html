@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+<!-- BODY -->
+{% block body %}
+<div class="app dg">
+    <!-- Main -->
+    <main class="app-view dg">
+        <!-- Menu -->
+        {% include 'dashboard/partials/menu-app.html' %}
+        <div class="app-container">
+            <div class="df" style="justify-content: space-between">
+                <h1>{{ task.name_task}}</h1>
+                <a href="/tasks">
+                    <button class="button2">
+                        <i class="bi bi-arrow-left"></i> Retour
+                    </button>
+                </a>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if
+            messages %}
+            <div id="flash-messages" class="container">
+                {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %} {% endwith %}
+
+            <form action="/edit-task/{{ task.id }}" class="table-list" method="post">
+
+                <label for="name_task">Nom de la tâche : </label>
+
+                <input required type="text" value="{{ task.name_task }}" name="name_task" />
+
+                <label for="status">Statut : </label>
+                <select required name="status">
+                    <option value="0" disabled {% if not task.status %}selected{% endif %}>Statut</option>
+                    <option value="À faire" {% if task.status=='À faire' %}selected{% endif %}>À faire</option>
+                    <option value="Bloquée" {% if task.status=='Bloquée' %}selected{% endif %}>Bloquée</option>
+                    <option value="Terminée" {% if task.status=='Terminée' %}selected{% endif %}>Terminée</option>
+                </select>
+
+                <label for="time_spent">Temps passé : </label>
+                <input required type="number" value="{{ task.time_spent }}" step="0.1" name="time_spent" min="0" />
+
+                <button type="submit" class="button2">Sauvegarder</button>
+            </form>
+        </div>
+    </main>
+</div>
+{% endblock %}

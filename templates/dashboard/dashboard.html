@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+<!-- BODY -->
+{% block body %}
+<div class="app dg">
+  <!-- Main -->
+  <main class="app-view dg">
+    <!-- Menu -->
+    {% include 'dashboard/partials/menu-app.html' %}
+    <div class="app-container space">
+      <h1>Tableau de bord</h1>
+
+      <div class="projects-charts dg">
+        <div class="project-chart-item df">
+          <i class="bi bi-folder"></i>
+          <div>
+            <p>Projets total</p>
+            <span>{{ total_projects }}</span>
+          </div>
+        </div>
+
+        <div class="project-chart-item df">
+          <i class="bi bi-hourglass-split"></i>
+          <div>
+            <p>Projets en cours</p>
+            <span>{{ cours_projects }}</span>
+          </div>
+        </div>
+
+        <div class="project-chart-item df">
+          <i class="bi bi-check-circle-fill"></i>
+          <div>
+            <p>Projets terminés</p>
+            <span>{{ end_projects }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="clients-charts dg">
+        <div class="client-chart-item df">
+          <i class="bi bi-people-fill"></i>
+          <div>
+            <p>Nombre de Clients</p>
+            <span>{{ total_clients }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}
