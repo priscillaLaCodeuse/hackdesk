@@ -1,4 +1,6 @@
+// =============
 // Message flash
+// =============
 document.addEventListener("DOMContentLoaded", () => {
   const flashMessage = document.querySelector(".flash");
 
