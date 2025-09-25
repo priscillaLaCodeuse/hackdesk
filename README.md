@@ -1,5 +1,9 @@
 # 📌 HackDesk 🐼
 
+#### Vidéo Demo: [Lien vidéo](https://youtu.be/yfdCKZ1kviA)
+
+#### Description:
+
 HackDesk est une application web conçue comme un **bureau virtuel de gestion de projets pour les développeurs**.
 
 Elle permet à un utilisateur de gérer efficacement ses **clients**, ses **projets** et ses **tâches**, tout en offrant un **tableau de bord clair** pour suivre l’avancement global.
