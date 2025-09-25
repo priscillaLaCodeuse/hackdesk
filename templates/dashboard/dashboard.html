@@ -10,6 +10,15 @@
     <div class="app-container space">
       <h1>Tableau de bord</h1>
 
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div id="flash-messages" class="container">
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
       <div class="projects-charts dg">
         <div class="project-chart-item df">
           <i class="bi bi-folder"></i>

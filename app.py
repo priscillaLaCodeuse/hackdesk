@@ -274,6 +274,8 @@ def profile():
 
         session.commit()
 
+        flash("Les informations ont été mises à jour.", "success")
+
         return redirect(url_for('profile'))
     
     return render_template('dashboard/profile.html', user=user)
