@@ -209,7 +209,7 @@ def reinitialisationPassword():
             return redirect(url_for('reinitialisationPassword'))
         
         # Vérifier si toutes les informations données sont justes
-        user = session.query(User).filter(lastname==lastname, firstname==firstname, email==email).first()
+        user = session.query(User).filter_by(lastname=lastname, firstname=firstname, email=email).first()
 
         # Si c'est juste, modifier le mot de passe
         if user:
