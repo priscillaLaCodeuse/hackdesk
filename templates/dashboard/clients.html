@@ -33,9 +33,9 @@
         <table>
           <thead>
             <tr>
-              <th>Entreprise</th>
               <th>Nom</th>
               <th>Prénom</th>
+              <th>Entreprise</th>
               <th>Téléphone</th>
               <th>Email</th>
               <th>Actions</th>
@@ -44,9 +44,9 @@
           <tbody>
             {% for client in clients|reverse %}
             <tr>
-              <td>{{ client.enterprise}}</td>
               <td>{{ client.lastname}}</td>
               <td>{{ client.firstname}}</td>
+              <td>{{ client.enterprise}}</td>
               <td>{{ client.phone_number}}</td>
               <td>{{ client.email}}</td>
               <td class="actions df">
