@@ -2,7 +2,7 @@
 
 <!-- #### URL : [Visitez HackDesk sur Render](https://hackdesk.onrender.com/) -->
 
-#### Vidéo Demo : [Lien vidéo](https://youtu.be/yfdCKZ1kviA)
+<!-- #### Vidéo Demo : [Lien vidéo](https://youtu.be/yfdCKZ1kviA) -->
 
 #### Description :
 
